@@ -1,8 +1,10 @@
 import React, {useContext, useRef} from 'react';
 import Modal from "./modal"
 import Menu from "./menu"
+import Tabs from "./tabs"
 import { FaBars, FaWindowClose, FaRegSave } from 'react-icons/fa';
-import { AllContext} from "./AllContext"
+import { AllContext } from "./AllContext"
+
 
 
 function App() {
@@ -44,9 +46,10 @@ function App() {
             <h3 className="header">{loadedList}</h3>
             <FaRegSave
               onClick={() => localStorage.setItem(loadedList, JSON.stringify(itemsData))}
-              style={{color: "teal", fontSize: "1rem", cursor: "pointer"}}
+              style={{color: "#5f5f99", fontSize: "1.4rem", cursor: "pointer", margin: "0.4em"}}
             />
           </div>
+          <Tabs />
           <LoadList />
         </div>
       </div>

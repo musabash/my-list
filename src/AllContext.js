@@ -6,6 +6,7 @@ const AllContext = React.createContext()
 function AllContextProvider(props) {
   const listArray = JSON.parse(localStorage.getItem('listArray'))
   const data = listArray && JSON.parse(localStorage.getItem(listArray[listArray.length - 1]))
+  const [activeTab, setActiveTab] = useState(null)
   const [itemsData, setItemsData] = useState(data ? data : [])
   const [newInput, setNewInput] = useState("")
   const [edit, setEdit] = useState("")
@@ -42,6 +43,7 @@ function AllContextProvider(props) {
 
   function LoadList() {
     return (
+      activeTab === null ? 
       <div className='list'>
         {itemsData && itemsData.map(item => 
           <Item
@@ -49,7 +51,17 @@ function AllContextProvider(props) {
             item={item}
           />)
         }
+      </div> :
+      <div className='list'>
+        {
+          itemsData && itemsData.filter(elm => elm.completed === activeTab).map(item => 
+          <Item
+            key={item.id}
+            item={item}
+          />)
+        }
       </div>
+
     )
   }
 
@@ -159,7 +171,8 @@ function AllContextProvider(props) {
     renameList,
     selectListHide,
     setSelectListHide,
-    handler
+    handler,
+    setActiveTab
   }
 
   return (
