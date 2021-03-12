@@ -363,7 +363,7 @@ p span {
   justify-content: flex-start;
   align-items: center;
   padding: 1em 0;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .edit-btn {

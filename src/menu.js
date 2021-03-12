@@ -40,7 +40,6 @@ function Menu() {
     }
   }
 
-
   function OptionsTabs() {
     return (
       <div className="menu-tabs">
@@ -56,26 +55,26 @@ function Menu() {
     )
   }
   
-  const yesNo = () => 
-  <>
-    <p>{selected.split(" ")[0]} "<span>Are you sure?</span>"?</p>
-    <div className="modal-container-buttons">
-      <input   
-        type="button"
-        value="YES"
-        onClick={handleClick}
-        className="modal-btns"
-      />
-      <input
-        type="button"
-        value="NO"
-        className="modal-btns"
-        onClick={() => console.log("done!")}
-      />
-    </div>
-  </>
+  // const yesNo = () => 
+  // <>
+  //   <p>{selected.split(" ")[0]} "<span>Are you sure?</span>"?</p>
+  //   <div className="modal-container-buttons">
+  //     <input   
+  //       type="button"
+  //       value="YES"
+  //       onClick={handleClick}
+  //       className="modal-btns"
+  //     />
+  //     <input
+  //       type="button"
+  //       value="NO"
+  //       className="modal-btns"
+  //       onClick={() => console.log("done!")}
+  //     />
+  //   </div>
+  // </>
 
-  function ListButton({name}){
+  function MenuButton({name}){
     return (
       <button
         name={name}
@@ -89,7 +88,7 @@ function Menu() {
 
   const ListOfLists = () => list.map(elm => 
             <div className={selected === elm ? "menu-tab-opened" : ""}>
-              <ListButton name={elm} />
+              <MenuButton name={elm} />
               {selected === elm && <OptionsTabs />}
             </div>
           )
@@ -97,8 +96,8 @@ function Menu() {
   return (
     <div className={menuHide ? "modal__menu hide" : "modal__menu"}>
       <div className="menu-container-buttons">
-          <ListButton name="Save" />
-          <ListButton name="Clean All Data" />
+          <MenuButton name="Save" />
+          <MenuButton name="Clean All Data" />
           <ListOfLists />
       </div>
     </div>
